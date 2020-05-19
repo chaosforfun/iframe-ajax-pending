@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <base href="/" />
+    <!-- todo favicon -->
+    <% for (var cssFile in htmlWebpackPlugin.files.css) { %>
+    <link href="<%= htmlWebpackPlugin.files.css[cssFile] %>" rel="stylesheet">
+    <% } %>
+    <title>iframe-ajax-pending</title>
+</head>
+
+<body>
+    <script src="https://static.koocdn.com/lib/core-js/3.x/core-js.js"></script>
+    <script src="https://images.koolearn.com/shark/project/polyfill/whatwg-fetch.js"></script>
+    <div id="root"></div>
+    <div id="model-root"></div>
+    <script src="https://static.koocdn.com/lib/react/16.x/react.js"></script>
+    <script src="https://static.koocdn.com/lib/react/16.x/react-dom.js"></script>
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+    <% } %>
+</body>
+
+</html>

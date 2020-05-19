@@ -28,16 +28,6 @@ module.exports = {
             before(app) {
                 apiMocker(app, path.join(__dirname, './mock/index.js'));
             },
-            proxy: {
-                '/api': {
-                    target: 'https://learn.neibu.koolearn.com',
-                    // target: 'http://10.155.54.168:8087', // 杨晨光ip
-                    // target: 'http://10.155.54.213:80', // fengqi ip
-                    changeOrigin: true,
-                    secure: false,
-                    logLevel: 'debug',
-                },
-            },
         },
     },
 };

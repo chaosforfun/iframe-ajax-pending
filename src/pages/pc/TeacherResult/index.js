@@ -6,12 +6,15 @@ function TeacherResult({
     dispatch,
 }) {
     console.log('component render', dispatch);
-    // 这一行删掉就没事了
+    // 神奇点: 方案1
     let params = getNormalAllQueryString();
+    // 神奇点: 方案2
+    // let params = getNormalAllQueryString();
     let getTeacherResult = () => {
-        // 用 GET 代替 rematch也没事
-        // GET('/api/live/teacher/report');
+        // 神奇点: 方案1
         dispatch.getTeacherReport({});
+        // 神奇点: 方案2
+        // fetch('/api/live/teacher/report');
     };
     useEffect(() => {
         getTeacherResult();
@@ -22,11 +25,12 @@ function TeacherResult({
         </div>
     );
 }
-
+// 神奇点: 方案1
 import connect from 'common/connect';
 
 export default connect(['modelLiveTeacher'], 'modelLiveTeacher')(TeacherResult);
 
+// 神奇点: 方案2
 // import { connect } from 'react-redux';
 
 // export default connect(() => ({}), (dispatch) => {

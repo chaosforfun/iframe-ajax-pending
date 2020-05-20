@@ -24,7 +24,7 @@ class ErrorBoundary extends React.Component {
         );
     }
 }
-
+// 神奇点: 方案1
 render(<ErrorBoundary />, root);
-// 去掉ErrorBoundary也没事
+// 神奇点: 方案2
 // render(<App />, root);

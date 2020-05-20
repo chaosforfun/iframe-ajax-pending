@@ -1,15 +1,10 @@
 /* eslint-disable import/first */
 import React, { useEffect } from 'react';
-import { getNormalAllQueryString } from 'common/util';
 
 function TeacherResult({
     dispatch,
 }) {
     console.log('component render', dispatch);
-    // 神奇点: 方案1
-    let params = getNormalAllQueryString();
-    // 神奇点: 方案2
-    // let params = getNormalAllQueryString();
     let getTeacherResult = () => {
         // 神奇点: 方案1
         dispatch.getTeacherReport({});
@@ -21,23 +16,24 @@ function TeacherResult({
     }, []);
     return (
         <div>
-           simple content
+            simple content
         </div>
     );
 }
-// 神奇点: 方案1
-import connect from 'common/connect';
 
-export default connect(['modelLiveTeacher'], 'modelLiveTeacher')(TeacherResult);
+import { connect } from 'react-redux';
 
-// 神奇点: 方案2
-// import { connect } from 'react-redux';
+export default connect(() => {
+    // 神奇点: 方案1
+    // return {};
+    // 神奇点: 方案2
+    let res = { loading: {} };
+    return res;
+}, (dispatch) => {
+    return {
+        dispatch: {
+            getTeacherReport: dispatch.modelLiveTeacher.getTeacherReport,
 
-// export default connect(() => ({}), (dispatch) => {
-//     return {
-//         dispatch: {
-//             getTeacherReport: dispatch.modelLiveTeacher.getTeacherReport,
-
-//         },
-//     };
-// })(TeacherResult);
+        },
+    };
+})(TeacherResult);

@@ -8,6 +8,7 @@ export default function(modelNames, componentName) {
     if (type === '[object String]' || type === '[object Array]') {
         if (type === '[object String]') modelNames = [modelNames];
         const mapState = (state) => {
+            console.log('mapState');
             let res = { loading: {} };
             modelNames.forEach((modelName) => {
                 res[modelName] = state[modelName];
@@ -17,6 +18,7 @@ export default function(modelNames, componentName) {
         };
         const mapDispatch = (dispatch) => {
             let res = { dispatch };
+            console.log('mapDispatch');
             modelNames.forEach((modelName) => {
                 if (dispatch[modelName].init) dispatch[modelName].init(componentName);
                 assignWith(res.dispatch, dispatch[modelName], (objValue, srcValue, key, object, source) => {

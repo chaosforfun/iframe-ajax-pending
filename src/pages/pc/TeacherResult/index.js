@@ -24,9 +24,9 @@ function TeacherResult({
 import { connect } from 'react-redux';
 
 export default connect(() => {
-    // 神奇点: 方案1
-    // return {};
     // 神奇点: 方案2
+    // return {};
+    // 神奇点: 方案1
     let res = { loading: {} };
     return res;
 }, (dispatch) => {
